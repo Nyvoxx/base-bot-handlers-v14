@@ -1,4 +1,4 @@
-const { Collection } = require('discord.js');
+const { Collection, MessageFlags } = require('discord.js');
 
 module.exports = {
   name: 'interactionCreate',
@@ -17,7 +17,7 @@ module.exports = {
       console.error(`[!] Command ${interaction.commandName} has no data property.`);
       return interaction.reply({ 
         content: 'This command is not properly configured!', 
-        ephemeral: true 
+        flags: MessageFlags.Ephemeral 
       });
     }
 
@@ -38,7 +38,7 @@ module.exports = {
         const timeLeft = (expirationTime - now) / 1000;
         return interaction.reply({ 
           content: `Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.data.name}\` command.`,
-          ephemeral: true 
+           flags: MessageFlags.Ephemeral
         });
       }
     }
@@ -52,7 +52,7 @@ module.exports = {
         console.error(`[!] Command ${interaction.commandName} has no execute function.`);
         return interaction.reply({ 
           content: 'This command is not properly implemented!', 
-          ephemeral: true 
+           flags: MessageFlags.Ephemeral
         });
       }
 
@@ -62,7 +62,7 @@ module.exports = {
       
       const errorMessage = { 
         content: 'There was an error executing this command!', 
-        ephemeral: true 
+        flags: MessageFlags.Ephemeral
       };
       
       try {
