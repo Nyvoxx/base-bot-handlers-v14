@@ -5,6 +5,7 @@ module.exports = {
   description: 'Lists all available commands or info about a specific command',
   aliases: ['commands', 'cmds'],
   usage: '[command name]',
+  category: 'Utility',
   cooldown: 3,
   async execute(message, args, client) {
     const prefix = client.prefix;
